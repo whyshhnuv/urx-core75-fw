@@ -24,7 +24,7 @@
     "encoder": {
         "enabled": true,
         "rotary": [
-            {"pin_a": "B2", "pin_b": "B10"}
+            {"pin_a": "B2", "pin_b": "B10", "resolution": 2}
         ]
     },
     "rgb_matrix": {
