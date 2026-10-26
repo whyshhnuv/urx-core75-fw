@@ -86,6 +86,7 @@ void board_init(void) {
 
 void keyboard_post_init_user(void) {
     kb_keyboard_post_init();
+    socd_cleaner_enabled = true;
     load_custom_rgb();
 }
 
