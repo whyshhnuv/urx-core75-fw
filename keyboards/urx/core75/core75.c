@@ -114,8 +114,26 @@ void matrix_scan_user(void) {
 #endif
 }
 
+// ===========================================================================
+// Knob push-button: toggle mute + media stop/play
+//
+// The encoder's center switch is the matrix key at [0][15], bound to the
+// custom keycode KNOB_TOGGLE (see config.h / keymap.c). The firmware cannot
+// read the player's state, so the knob tracks its own: press 1 mutes + stops
+// (KC_MSTP), press 2 un-mutes + resumes (KC_MPLY). The keycode is fully
+// consumed here (returns false) so it never reaches the generic decoder.
+// ===========================================================================
+static bool knob_is_muted = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == KNOB_TOGGLE) {
+        if (record->event.pressed) {
+            knob_is_muted = !knob_is_muted;
+            tap_code_delay(KC_MUTE, 20);
+            tap_code_delay(knob_is_muted ? KC_MSTP : KC_MPLY, 20);
+        }
+        return false;
+    }
     return kb_process_record_common(keycode, record);
 }
-
 

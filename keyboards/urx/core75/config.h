@@ -84,3 +84,10 @@
 // Extra features
 #define USB_AUTO_SWITCH_ENABLE 0
 #define BATTERY_LED_COUNT 10
+
+// Knob push-button custom keycode (matrix [0][15], the encoder's center switch).
+// A press toggles mute (KC_MUTE) + stops (KC_MSTP) or resumes (KC_MPLY) media.
+// Handler lives in core75.c (process_record_user).
+// The value equals QK_USER_0 (0x7E40); it is written as a literal here because
+// config.h is force-included before quantum/keycodes.h defines QK_USER_0.
+#define KNOB_TOGGLE 0x7E40
