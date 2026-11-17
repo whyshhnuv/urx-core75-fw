@@ -32,7 +32,7 @@
  */
 
 #define MATRIX_UNSELECT_DRIVE_HIGH
-#define CORTEX_ENABLE_WFI_IDLE          TRUE
+#define CORTEX_ENABLE_WFI_IDLE          FALSE
 
 /* Ensure we jump to bootloader if the RESET keycode was pressed */
 #define EARLY_INIT_PERFORM_BOOTLOADER_JUMP TRUE
